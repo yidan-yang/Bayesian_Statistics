@@ -1,0 +1,58 @@
+---
+title: "wk1_quiz1"
+author: "Yidan Yang"
+date: "March 3, 2019"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(statsr)
+```
+</div>
+
+### Q2:
+Of women ages 40 and over, 10 out of 1000 have breast cancer. A mammography has 80% sensitivity (true positive rate) and a 90% specificity (true negative rate). A woman walks into a clinic for a routine screening (mammography). What is the probability that she has breast cancer and tests positive?
+
+$$P=\frac{10}{1000}=0.01$$
+
+</div>
+### Q3: 
+Of women ages 40 and over, 10 out of 1000 have breast cancer. A mammography has 80% sensitivity (true positive rate) and a 90% specificity (true negative rate). A woman walks into a clinic for a routine screening (mammography) and tests positive for breast cancer. Now, what is the probability that she has breast cancer?
+
+$$\begin{aligned}
+P(cancer \mid +)&=\frac{P(cancer\&+)}{P(+)}\\
+&=\frac{0.8*0.01}{0.8*0.01+0.99*0.1}\\
+&=0.7476
+\end{aligned}$$
+
+```{r}
+0.8*0.01/(0.8*0.01+0.99*0.1)
+```
+
+</div>
+### Q7: 
+A clinical researcher wants to determine whether a new drug, RU-487, is more effective than RU-486. Suppose that 100 women are assigned the treatment group (given RU-487) and 100 women are assigned to the control group (RU-486). In the treatment group, three people became pregnant. In the control group, nine people became pregnant. Is there sufficient evidence (at $\alpha$ = 0.05) to conclude that RU-487 is more effective at preventing pregnancy than RU-486? Hint - Let pp be the probability that a pregnancy comes from the treatment group. : $H_0: p = 0.5$, $H_1: p<0.5$: 
+
+$$k=4\\
+n=9+3=12$$
+
+```{r}
+sum(dbinom(0:3, size = 12, p=0.5))
+```
+
+</div>
+### Q8:
+You go to Las Vegas and sit down at a slot machine. You are told by a highly reliable source that, for each spin, the probability of winning the jackpot is either 1 in 1,000 or 1 in 1,000,000, but you have no prior information to tell you which of the two it is. You play ten times, but do not win the jackpot. What is the posterior probability that the true odds of hitting the jackpot are 1 in 1,000?
+
+</div>
+```{r}
+H1=0.5
+H2=0.5
+pDH1=(0.999)^10
+pDH2=(0.999999)^10
+pD=pDH1*H1+pDH2*(H2)
+pH1D=pDH1*H1/pD
+pH1D
+```
+
